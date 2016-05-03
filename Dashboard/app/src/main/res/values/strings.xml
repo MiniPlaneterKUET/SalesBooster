@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Dashboard</string>
+    <string name="icon_share">&#xf244;</string>
+    <string name="icon_user">&#xf007;</string>
+</resources>
