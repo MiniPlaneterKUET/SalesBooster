@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.electroscholars.manash.takeorderclient.Activities.TakeOrderActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Payment Method:"
+            android:id="@+id/paymentMethodTextView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"/>
+
+        <Space
+            android:layout_width="50dp"
+            android:layout_height="10dp"/>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cash"
+                android:id="@+id/cashCheckBox"
+                android:checked="false"/>
+
+            <Space
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cheque"
+                android:id="@+id/chequeCheckBox"
+                android:checked="false"/>
+        </TableRow>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView2">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/cashAmountEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Cash"
+                    app:met_floatingLabelAnimating="true"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelText="Cash Amount:"
+                    app:met_iconLeft="@drawable/cash"
+                    app:met_iconPadding="0dp"
+                    app:met_maxCharacters="50" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/bankNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Bank Name"
+                    app:met_floatingLabelAnimating="true"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelText="Bank Name:"
+                    app:met_iconLeft="@drawable/bank"
+                    app:met_iconPadding="0dp"
+                    app:met_maxCharacters="50" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/chequeAmountEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Cheque Amount"
+                    app:met_floatingLabelAnimating="true"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelText="Cheque Amount:"
+                    app:met_iconLeft="@drawable/cheque"
+                    app:met_iconPadding="0dp"
+                    app:met_maxCharacters="50" />
+
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/chequeNoEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Cheque No"
+                    app:met_floatingLabelAnimating="true"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelText="Cheque No:"
+                    app:met_iconLeft="@drawable/chequeno"
+                    app:met_iconPadding="0dp"
+                    app:met_maxCharacters="50" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>
