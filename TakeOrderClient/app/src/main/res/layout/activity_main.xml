@@ -73,6 +73,59 @@
                 app:met_iconPadding="0dp"
                 app:met_maxCharacters="10" />
 
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/clientEmailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="e-mail"
+                app:met_floatingLabelAnimating="true"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelText="e-mail Address:"
+                app:met_iconLeft="@drawable/mail"
+                app:met_iconPadding="0dp"
+                app:met_maxCharacters="50" />
+
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/clientAddressEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address"
+                app:met_floatingLabelAnimating="true"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelText="Address:"
+                app:met_iconLeft="@drawable/address"
+                app:met_iconPadding="0dp"
+                app:met_maxCharacters="50" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/clientCityEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="City"
+                app:met_floatingLabelAnimating="true"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelText="City:"
+                app:met_iconLeft="@drawable/city"
+                app:met_iconPadding="0dp"
+                app:met_maxCharacters="50" />
+
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/clientCountryEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Country"
+                app:met_floatingLabelAnimating="true"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelText="Country:"
+                app:met_iconLeft="@drawable/country"
+                app:met_iconPadding="0dp"
+                app:met_maxCharacters="50" />
+
+
+
+
         </LinearLayout>
     </ScrollView>
 
@@ -89,6 +142,20 @@
             android:layout_height="wrap_content"
             android:text="Save"
             android:id="@+id/saveButton"
+            android:layout_alignTop="@+id/tableRow"
+            android:layout_alignParentEnd="true"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.82"
+            android:minWidth="60dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reset"
+            android:id="@+id/resetButton"
             android:layout_alignTop="@+id/tableRow"
             android:layout_alignParentEnd="true"/>
 
