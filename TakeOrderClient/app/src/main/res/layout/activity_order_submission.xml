@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.electroscholars.manash.takeorderclient.Activities.TakeOrderActivity">
+    tools:context="com.electroscholars.manash.takeorderclient.Activities.OrderSubmissionActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -111,6 +111,18 @@
                     app:met_floatingLabel="highlight"
                     app:met_floatingLabelText="Cheque No:"
                     app:met_iconLeft="@drawable/chequeno"
+                    app:met_iconPadding="0dp"
+                    app:met_maxCharacters="50" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/chequeDateEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Cheque Date"
+                    app:met_floatingLabelAnimating="true"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelText="Cheque Date:"
+                    app:met_iconLeft="@drawable/date"
                     app:met_iconPadding="0dp"
                     app:met_maxCharacters="50" />
 

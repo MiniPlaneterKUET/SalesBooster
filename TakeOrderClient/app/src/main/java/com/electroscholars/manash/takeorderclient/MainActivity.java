@@ -1,16 +1,13 @@
 package com.electroscholars.manash.takeorderclient;
 
 import android.content.Intent;
-import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.electroscholars.manash.takeorderclient.Activities.TakeOrderActivity;
-import com.electroscholars.manash.takeorderclient.HelperClass.Client;
+import com.electroscholars.manash.takeorderclient.Activities.OrderSubmissionActivity;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
@@ -88,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), TakeOrderActivity.class);
+                Intent intent = new Intent(getApplicationContext(), OrderSubmissionActivity.class);
                 intent.putExtra(EXTRA_MESSAGE, "DemoMessage");
                 startActivity(intent);
             }
