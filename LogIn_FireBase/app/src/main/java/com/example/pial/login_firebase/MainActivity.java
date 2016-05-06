@@ -1,3 +1,6 @@
+
+//Author: Pial Kanti
+
 package com.example.pial.login_firebase;
 
 import android.support.v7.app.AppCompatActivity;
