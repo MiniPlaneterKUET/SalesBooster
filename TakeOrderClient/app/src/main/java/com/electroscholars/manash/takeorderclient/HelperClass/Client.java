@@ -8,9 +8,9 @@ public class Client {
 
     //Client category helper class
     public class ClientCategory{
-        private final static int TRADE_ID = 0;
-        private final static int DISTRIBUTOR_ID = 1;
-        private final static int CORPORATE_ID = 2;
+        public final static int TRADE_ID = 0;
+        public final static int DISTRIBUTOR_ID = 1;
+        public final static int CORPORATE_ID = 2;
 
         private final static String TRADE = "Trade";
         private final static String CORPORATE = "Corporate";
@@ -34,6 +34,8 @@ public class Client {
         public void setID(int id) {this.id = id;}
 
         public String getCategory() {return category; }
+
+
 
     }
 

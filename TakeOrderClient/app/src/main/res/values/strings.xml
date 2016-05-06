@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TakeOrderClient</string>
+
+    <string-array name="clientCategory">
+        <item>Corporate</item>
+        <item>Distributor</item>
+        <item>Trade</item>
+    </string-array>
 </resources>

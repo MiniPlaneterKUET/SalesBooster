@@ -123,14 +123,20 @@
                 app:met_iconPadding="0dp"
                 app:met_maxCharacters="50" />
 
-
+            <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                android:id="@+id/categoryMaterialBetterSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Category"
+                app:met_iconLeft="@drawable/category"
+                app:met_floatingLabel="normal" />
 
 
         </LinearLayout>
     </ScrollView>
 
     <TableRow
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"
         android:id="@+id/tableRow"
@@ -147,9 +153,8 @@
 
         <Space
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.82"
-            android:minWidth="60dp"/>
+            android:layout_height="match_parent"
+            android:layout_weight="0.51"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -157,13 +162,13 @@
             android:text="Reset"
             android:id="@+id/resetButton"
             android:layout_alignTop="@+id/tableRow"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true"
+            />
 
         <Space
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.82"
-            android:minWidth="60dp"/>
+            android:layout_height="match_parent"
+            android:layout_weight="0.47"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -171,7 +176,8 @@
             android:text="Next"
             android:id="@+id/nextButton"
             android:layout_alignTop="@+id/tableRow"
-            android:layout_toStartOf="@+id/textView"/>
+            android:layout_toStartOf="@+id/textView"
+            />
 
     </TableRow>
 
