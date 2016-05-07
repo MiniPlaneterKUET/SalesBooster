@@ -38,6 +38,8 @@
             android:layout_height="match_parent">
 
             <com.rengwuxian.materialedittext.MaterialEditText
+                android:inputType="textPersonName"
+                android:singleLine="true"
                 android:id="@+id/clientNameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,7 +52,9 @@
                 app:met_maxCharacters="30" />
 
             <com.rengwuxian.materialedittext.MaterialEditText
+                android:inputType="text"
                 android:id="@+id/clientIDEditText"
+                android:singleLine="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Client ID"
@@ -63,6 +67,7 @@
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/clientContactEditText"
+                android:inputType="phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Contact Number"
@@ -75,6 +80,7 @@
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/clientEmailEditText"
+                android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="e-mail"
@@ -88,6 +94,7 @@
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/clientAddressEditText"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Address"
@@ -100,6 +107,8 @@
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/clientCityEditText"
+                android:inputType="text"
+                android:singleLine="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="City"
@@ -113,6 +122,8 @@
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/clientCountryEditText"
+                android:inputType="text"
+                android:singleLine="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Country"
