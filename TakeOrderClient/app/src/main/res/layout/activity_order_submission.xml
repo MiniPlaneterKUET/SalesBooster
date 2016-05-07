@@ -68,6 +68,8 @@
                 android:layout_height="match_parent">
 
                 <com.rengwuxian.materialedittext.MaterialEditText
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:id="@+id/cashAmountEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
