@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import com.electroscholars.manash.takeorderclient.Activities.OrderSubmissionActivity;
+import com.electroscholars.manash.takeorderclient.Activities.TakeOrderActivity;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), OrderSubmissionActivity.class);
+                Intent intent = new Intent(getApplicationContext(), TakeOrderActivity.class);
                 intent.putExtra(EXTRA_MESSAGE, "DemoMessage");
                 startActivity(intent);
             }
