@@ -24,7 +24,7 @@ import java.util.Locale;
 
 public class OrderSubmissionActivity extends AppCompatActivity {
 
-
+    //Required fields
     private MaterialEditText chequeDateEditText;
     private MaterialEditText deliveryDateEditText;
 
@@ -32,11 +32,18 @@ public class OrderSubmissionActivity extends AppCompatActivity {
     private boolean isChequeDatePickerOpened = false;
     private boolean isDeliveryDatePickerOpened = false;
 
+    //If the datepicker is cancelled these flags will handle the issue
     private boolean isChequeDatePicked = false;
+    private boolean isDeliveryDatePicked = false;
 
+    //Strings for handling the dates in strings
+    //TODO:
+    //1. Add DateFormatter class to handle it
     private String chequeDate = "";
+    private String deliveryDate = "";
 
-
+    //If date is picked a chequeDatePicked flag will be set in order to transfer the date setting
+    // workaround to OnDismissListener
     class ChequeDateListener implements DatePickerDialog.OnDateSetListener {
         @Override
         public void onDateSet(DatePicker datePicker, int year, int month, int day){
@@ -46,6 +53,7 @@ public class OrderSubmissionActivity extends AppCompatActivity {
         }
     }
 
+    //Handling the datepicker cancel events
     class ChequeOnDismissListener implements DialogInterface.OnDismissListener{
         @Override
         public void onDismiss(DialogInterface dialog){
@@ -60,14 +68,32 @@ public class OrderSubmissionActivity extends AppCompatActivity {
         }
     }
 
-
+    //Same as chequeDateListener
     class DeliveryDateListener implements DatePickerDialog.OnDateSetListener {
         @Override
         public void onDateSet(DatePicker datePicker, int year, int month, int day){
-
+            isDeliveryDatePickerOpened = false;
+            isDeliveryDatePicked = true;
+            deliveryDate = String.valueOf(day) + " - " + String.valueOf(month) + " - " + String
+                    .valueOf(year);
         }
     }
 
+
+    //Same as ChequeOnDismiss
+    class DeliveryOnDismissListener implements DialogInterface.OnDismissListener {
+        @Override
+        public void onDismiss(DialogInterface dialogInterface){
+            if (isDeliveryDatePicked){
+                deliveryDateEditText.setText(deliveryDate);
+                isDeliveryDatePicked = false;
+                isDeliveryDatePickerOpened = false;
+            } else {
+                deliveryDateEditText.setText(null);
+                isDeliveryDatePickerOpened = false;
+            }
+        }
+    }
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,26 +109,31 @@ public class OrderSubmissionActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
-
                 Calendar calendar = Calendar.getInstance();
                 int year = calendar.get(Calendar.YEAR);
                 int month = calendar.get(Calendar.MONTH);
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
 
                 if (!isChequeDatePickerOpened){
+                    isChequeDatePicked = false; //Multiple touch issue solver flag
+                    isChequeDatePickerOpened = true; // Cancel event issue solver flag
 
-                    isChequeDatePicked = false;
-                    isChequeDatePickerOpened = true;
-
+                    //Creating a datepickerdialog
                     DatePickerDialog dialog = new DatePickerDialog(OrderSubmissionActivity.this,
                             new ChequeDateListener(), year, month, day);
+
+                    //Adding the dismisslistener
                     dialog.setOnDismissListener(new ChequeOnDismissListener());
+
+                    //No comment needed
                     dialog.show();
                 }
                 return false;
             }
         });
 
+
+        //Handling the touch events of deliverydateEdittext
         deliveryDateEditText.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -112,9 +143,13 @@ public class OrderSubmissionActivity extends AppCompatActivity {
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
 
                 if (!isDeliveryDatePickerOpened){
+
                     isDeliveryDatePickerOpened = true;
+                    isDeliveryDatePicked = false;
+
                     DatePickerDialog dialog = new DatePickerDialog(OrderSubmissionActivity.this,
                             new DeliveryDateListener(), year, month, day);
+                    dialog.setOnDismissListener(new DeliveryOnDismissListener());
                     dialog.show();
                 }
                 return false;
