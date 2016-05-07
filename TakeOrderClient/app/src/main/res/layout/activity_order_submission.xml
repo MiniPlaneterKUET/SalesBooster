@@ -68,6 +68,8 @@
                 android:layout_height="match_parent">
 
                 <com.rengwuxian.materialedittext.MaterialEditText
+                    android:inputType="numberDecimal"
+                    android:singleLine="true"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:id="@+id/cashAmountEditText"
@@ -82,6 +84,7 @@
                     app:met_maxCharacters="50" />
 
                 <com.rengwuxian.materialedittext.MaterialEditText
+                    android:singleLine="true"
                     android:id="@+id/bankNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -95,6 +98,8 @@
 
                 <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/chequeAmountEditText"
+                    android:singleLine="true"
+                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Cheque Amount"
@@ -108,6 +113,7 @@
 
                 <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/chequeNoEditText"
+                    android:singleLine="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Cheque No"
@@ -120,6 +126,7 @@
 
                 <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/chequeDateEditText"
+                    android:singleLine="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Cheque Date (dd-mm-yyyy)"
@@ -133,6 +140,8 @@
 
                 <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/paidAmountEditText"
+                    android:singleLine="true"
+                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Paid Amount"
@@ -146,6 +155,7 @@
 
                 <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/outstandingEditText"
+                    android:singleLine="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Outstanding"
@@ -159,6 +169,7 @@
 
                 <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/siteOfDeliveryEditText"
+                    android:singleLine="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Site of Delivery"
@@ -171,6 +182,7 @@
 
                 <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/deliveryDateEditText"
+                    android:singleLine="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Delivery date (dd-mm-yyyy)"
@@ -186,16 +198,33 @@
                     android:layout_height="wrap_content"
                     android:text="On Site Delivery"
                     android:textSize="18dp"
-                    android:id="@+id/checkBox"
+                    android:id="@+id/onSiteDeliveryCheckBox"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"/>
 
-                <Button
+                <TableRow
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Submit"
-                    android:id="@+id/submitButton"
-                    android:layout_gravity="center"/>
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reset"
+                        android:id="@+id/resetButton"/>
+
+                    <Space
+                        android:layout_width="50dp"
+                        android:layout_height="20px"
+                        />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Submit"
+                        android:id="@+id/submitButton"
+                        android:layout_gravity="center"/>
+                </TableRow>
 
             </LinearLayout>
 

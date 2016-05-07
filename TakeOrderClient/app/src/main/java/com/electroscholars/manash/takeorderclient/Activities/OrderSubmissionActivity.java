@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 
 import com.electroscholars.manash.takeorderclient.R;
@@ -18,6 +20,22 @@ public class OrderSubmissionActivity extends AppCompatActivity {
     //Required fields
     private MaterialEditText chequeDateEditText;
     private MaterialEditText deliveryDateEditText;
+    private MaterialEditText bankNameEditText;
+    private MaterialEditText chequeAmountEditText;
+    private MaterialEditText chequeNoEditText;
+    private MaterialEditText paidAmountEditText;
+    private MaterialEditText outstandingEditText;
+    private MaterialEditText siteOfDeliveryEditText;
+    private MaterialEditText cashAmountEditText;
+
+    //Checkboxs
+    private CheckBox cashCheckBox;
+    private CheckBox chequeCheckBox;
+    private CheckBox onSiteDeliveryCheckBox;
+
+    //Buttons
+    private Button resetButton;
+    private Button saveButton;
 
     //It is required to prevent the datepicker from appearing multiple times
     private boolean isChequeDatePickerOpened = false;
@@ -94,6 +112,22 @@ public class OrderSubmissionActivity extends AppCompatActivity {
         //Initializing
         chequeDateEditText = (MaterialEditText) findViewById(R.id.chequeDateEditText);
         deliveryDateEditText = (MaterialEditText) findViewById(R.id.deliveryDateEditText);
+        paidAmountEditText = (MaterialEditText) findViewById(R.id.paidAmountEditText);
+        outstandingEditText = (MaterialEditText) findViewById(R.id.outstandingEditText);
+        siteOfDeliveryEditText = (MaterialEditText) findViewById(R.id.siteOfDeliveryEditText);
+        cashAmountEditText = (MaterialEditText) findViewById(R.id.cashAmountEditText);
+        bankNameEditText = (MaterialEditText) findViewById(R.id.bankNameEditText);
+        chequeAmountEditText = (MaterialEditText) findViewById(R.id.chequeAmountEditText);
+        chequeNoEditText = (MaterialEditText) findViewById(R.id.chequeNoEditText);
+
+        resetButton = (Button) findViewById(R.id.resetButton);
+        saveButton = (Button) findViewById(R.id.saveButton);
+
+
+        cashCheckBox = (CheckBox) findViewById(R.id.cashCheckBox);
+        chequeCheckBox = (CheckBox) findViewById(R.id.chequeCheckBox);
+        onSiteDeliveryCheckBox = (CheckBox) findViewById(R.id.onSiteDeliveryCheckBox);
+
 
         //Preventing keypad from appearing
         chequeDateEditText.setFocusable(false);
@@ -151,5 +185,24 @@ public class OrderSubmissionActivity extends AppCompatActivity {
         });
 
 
+        //Clears all field when reset button is clicked
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cashCheckBox.setChecked(false);
+                chequeCheckBox.setChecked(false);
+                cashAmountEditText.setText(null);
+                bankNameEditText.setText(null);
+                cashAmountEditText.setText(null);
+                chequeNoEditText.setText(null);
+                chequeDateEditText.setText(null);
+                paidAmountEditText.setText(null);
+                outstandingEditText.setText(null);
+                siteOfDeliveryEditText.setText(null);
+                deliveryDateEditText.setText(null);
+                onSiteDeliveryCheckBox.setChecked(false);
+                chequeAmountEditText.setText(null);
+            }
+        });
     }
 }
