@@ -14,7 +14,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
@@ -39,6 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cash"
+                android:textSize="18dp"
                 android:id="@+id/cashCheckBox"
                 android:checked="false"/>
 
@@ -50,6 +51,7 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="18dp"
                 android:text="Cheque"
                 android:id="@+id/chequeCheckBox"
                 android:checked="false"/>
@@ -118,7 +120,7 @@
                     android:id="@+id/chequeDateEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Cheque Date"
+                    android:hint="Cheque Date (dd-mm-yyyy)"
                     app:met_floatingLabelAnimating="true"
                     app:met_floatingLabel="highlight"
                     app:met_floatingLabelText="Cheque Date:"
@@ -126,9 +128,77 @@
                     app:met_iconPadding="0dp"
                     app:met_maxCharacters="50" />
 
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/paidAmountEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Paid Amount"
+                    app:met_floatingLabelAnimating="true"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelText="Paid Amount:"
+                    app:met_iconLeft="@drawable/paidamount"
+                    app:met_iconPadding="0dp"
+                    app:met_maxCharacters="50" />
+
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/outstandingEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Outstanding"
+                    app:met_floatingLabelAnimating="true"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelText="Outstanding:"
+                    app:met_iconLeft="@drawable/outstanding"
+                    app:met_iconPadding="0dp"
+                    app:met_maxCharacters="50" />
+
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/siteOfDeliveryEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Site of Delivery"
+                    app:met_floatingLabelAnimating="true"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelText="Site of Delivery:"
+                    app:met_iconLeft="@drawable/delivery"
+                    app:met_iconPadding="0dp"
+                    app:met_maxCharacters="50" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/deliveryDateEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Delivery date (dd-mm-yyyy)"
+                    app:met_floatingLabelAnimating="true"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelText="Delivery date:"
+                    app:met_iconLeft="@drawable/date"
+                    app:met_iconPadding="0dp"
+                    app:met_maxCharacters="50" />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="On Site Delivery"
+                    android:textSize="18dp"
+                    android:id="@+id/checkBox"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Submit"
+                    android:id="@+id/submitButton"
+                    android:layout_gravity="center"/>
+
             </LinearLayout>
 
         </ScrollView>
+
 
     </LinearLayout>
 
