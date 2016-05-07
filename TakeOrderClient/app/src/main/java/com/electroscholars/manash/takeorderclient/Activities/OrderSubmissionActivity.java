@@ -1,26 +1,17 @@
 package com.electroscholars.manash.takeorderclient.Activities;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
-
-import android.content.Context;
 import android.content.DialogInterface;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 
 import com.electroscholars.manash.takeorderclient.R;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 public class OrderSubmissionActivity extends AppCompatActivity {
 
@@ -46,7 +37,7 @@ public class OrderSubmissionActivity extends AppCompatActivity {
     // workaround to OnDismissListener
     class ChequeDateListener implements DatePickerDialog.OnDateSetListener {
         @Override
-        public void onDateSet(DatePicker datePicker, int year, int month, int day){
+        public void onDateSet(DatePicker datePicker, int year, int month, int day) {
             isChequeDatePickerOpened = false;
             isChequeDatePicked = true;
             chequeDate = String.valueOf(day) + " - " + String.valueOf(month) + " - " + String.valueOf(year);
@@ -54,10 +45,10 @@ public class OrderSubmissionActivity extends AppCompatActivity {
     }
 
     //Handling the datepicker cancel events
-    class ChequeOnDismissListener implements DialogInterface.OnDismissListener{
+    class ChequeOnDismissListener implements DialogInterface.OnDismissListener {
         @Override
-        public void onDismiss(DialogInterface dialog){
-            if (isChequeDatePicked){
+        public void onDismiss(DialogInterface dialog) {
+            if (isChequeDatePicked) {
                 chequeDateEditText.setText(chequeDate);
                 isChequeDatePicked = false;
                 isChequeDatePickerOpened = false;
@@ -71,7 +62,7 @@ public class OrderSubmissionActivity extends AppCompatActivity {
     //Same as chequeDateListener
     class DeliveryDateListener implements DatePickerDialog.OnDateSetListener {
         @Override
-        public void onDateSet(DatePicker datePicker, int year, int month, int day){
+        public void onDateSet(DatePicker datePicker, int year, int month, int day) {
             isDeliveryDatePickerOpened = false;
             isDeliveryDatePicked = true;
             deliveryDate = String.valueOf(day) + " - " + String.valueOf(month) + " - " + String
@@ -83,8 +74,8 @@ public class OrderSubmissionActivity extends AppCompatActivity {
     //Same as ChequeOnDismiss
     class DeliveryOnDismissListener implements DialogInterface.OnDismissListener {
         @Override
-        public void onDismiss(DialogInterface dialogInterface){
-            if (isDeliveryDatePicked){
+        public void onDismiss(DialogInterface dialogInterface) {
+            if (isDeliveryDatePicked) {
                 deliveryDateEditText.setText(deliveryDate);
                 isDeliveryDatePicked = false;
                 isDeliveryDatePickerOpened = false;
@@ -104,17 +95,20 @@ public class OrderSubmissionActivity extends AppCompatActivity {
         chequeDateEditText = (MaterialEditText) findViewById(R.id.chequeDateEditText);
         deliveryDateEditText = (MaterialEditText) findViewById(R.id.deliveryDateEditText);
 
-        //If ChequeEditText is touhced then a datepicker would pop up
-        chequeDateEditText.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
+        //Preventing keypad from appearing
+        chequeDateEditText.setFocusable(false);
+        deliveryDateEditText.setFocusable(false);
 
+        //Handling the long click events of chequeEditText
+        chequeDateEditText.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
                 Calendar calendar = Calendar.getInstance();
                 int year = calendar.get(Calendar.YEAR);
                 int month = calendar.get(Calendar.MONTH);
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-                if (!isChequeDatePickerOpened){
+                if (!isChequeDatePickerOpened) {
                     isChequeDatePicked = false; //Multiple touch issue solver flag
                     isChequeDatePickerOpened = true; // Cancel event issue solver flag
 
@@ -133,16 +127,16 @@ public class OrderSubmissionActivity extends AppCompatActivity {
         });
 
 
-        //Handling the touch events of deliverydateEdittext
-        deliveryDateEditText.setOnTouchListener(new View.OnTouchListener() {
+        //Handling the long touch events of deliverydateEdittext
+        deliveryDateEditText.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
+            public boolean onLongClick(View view) {
                 Calendar calendar = Calendar.getInstance();
                 int year = calendar.get(Calendar.YEAR);
                 int month = calendar.get(Calendar.MONTH);
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-                if (!isDeliveryDatePickerOpened){
+                if (!isDeliveryDatePickerOpened) {
 
                     isDeliveryDatePickerOpened = true;
                     isDeliveryDatePicked = false;
@@ -155,7 +149,6 @@ public class OrderSubmissionActivity extends AppCompatActivity {
                 return false;
             }
         });
-
 
 
     }
