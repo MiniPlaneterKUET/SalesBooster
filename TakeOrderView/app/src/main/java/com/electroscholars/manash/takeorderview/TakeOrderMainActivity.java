@@ -6,9 +6,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +28,16 @@ import java.util.ArrayList;
 import dev.dworks.libs.astickyheader.SectionedGridAdapter;
 
 public class TakeOrderMainActivity extends AppCompatActivity {
+
+    public void createDialog(){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_layout, null);
+        dialogBuilder.setView(dialogView);
+
+        AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
+    }
 
     public class TextViewAdapter extends BaseAdapter{
         public ArrayList<Integer> id;
@@ -97,16 +109,18 @@ public class TakeOrderMainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
                 adapter.addItem("Chodon");
                 gridView.setAdapter(adapter);
+                createDialog();
             }
         });
 
-        gridView = (GridView) findViewById(R.id.gridView);
+//        gridView = (GridView) findViewById(R.id.gridView);
+//
+//        adapter = new TextViewAdapter(this);
+//
+//        gridView.setAdapter(adapter);
 
-        adapter = new TextViewAdapter(this);
-
-        gridView.setAdapter(adapter);
-
-
+        Intent intent = new Intent(this, ItemSQLiteActivity.class);
+        startActivity(intent);
 
     }
 
