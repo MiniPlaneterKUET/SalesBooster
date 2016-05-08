@@ -107,7 +107,7 @@ public class TakeOrderMainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                adapter.addItem("Chodon");
+                adapter.addItem("Hello World");
                 gridView.setAdapter(adapter);
                 createDialog();
             }
