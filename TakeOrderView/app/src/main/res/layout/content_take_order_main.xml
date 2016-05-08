@@ -11,10 +11,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.electroscholars.manash.takeorderview.TakeOrderMainActivity"
-    tools:showIn="@layout/activity_take_order_main">
+    tools:showIn="@layout/activity_take_order_main"
+    android:id="@+id/relativeLayout">
 
-    <TextView
+    <GridView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:id="@+id/gridView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:columnWidth="30dp"
+        android:numColumns="5"/>
 </RelativeLayout>
