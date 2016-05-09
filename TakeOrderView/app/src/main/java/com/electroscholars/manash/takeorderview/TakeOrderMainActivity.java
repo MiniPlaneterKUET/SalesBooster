@@ -1,6 +1,7 @@
 package com.electroscholars.manash.takeorderview;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -45,6 +46,24 @@ public class TakeOrderMainActivity extends AppCompatActivity {
 
     public void createDialog(){
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+
+
+        //When Add Button is clicked
+        dialogBuilder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        //When cancel button is clicked
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
         LayoutInflater inflater = this.getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.dialog_layout, null);
         dialogBuilder.setView(dialogView);
@@ -54,6 +73,8 @@ public class TakeOrderMainActivity extends AppCompatActivity {
         final EditText rateEditText = (EditText) dialogView.findViewById(R.id.rateEditText);
 
         rateEditText.setText("12345689");
+
+
 
 
         ItemDbHelper itemDbHelper = new ItemDbHelper(this);
@@ -95,6 +116,7 @@ public class TakeOrderMainActivity extends AppCompatActivity {
             }
         });
 
+        alertDialog.setTitle("Add New Item");
 
         alertDialog.show();
     }
