@@ -24,6 +24,11 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'dev.dworks.libs:astickyheader:0.1.0'
+
     compile 'com.android.support:design:23.1.1'
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
+    compile 'com.weiwangcn.betterspinner:library-material:1.1.0'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.github.sd6352051.niftydialogeffects:niftydialogeffects:1.0.0@aar'
     compile files('libs/stickygridheaders.jar')
 }

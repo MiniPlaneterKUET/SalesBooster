@@ -20,7 +20,12 @@ import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+
+import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -29,12 +34,12 @@ import dev.dworks.libs.astickyheader.SectionedGridAdapter;
 
 public class TakeOrderMainActivity extends AppCompatActivity {
 
+
     public void createDialog(){
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.dialog_layout, null);
         dialogBuilder.setView(dialogView);
-
         AlertDialog alertDialog = dialogBuilder.create();
         alertDialog.show();
     }
@@ -113,14 +118,12 @@ public class TakeOrderMainActivity extends AppCompatActivity {
             }
         });
 
-//        gridView = (GridView) findViewById(R.id.gridView);
-//
-//        adapter = new TextViewAdapter(this);
-//
-//        gridView.setAdapter(adapter);
+        gridView = (GridView) findViewById(R.id.gridView);
+        adapter = new TextViewAdapter(this);
+        gridView.setAdapter(adapter);
 
-        Intent intent = new Intent(this, ItemSQLiteActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, ItemSQLiteActivity.class);
+//        startActivity(intent);
 
     }
 

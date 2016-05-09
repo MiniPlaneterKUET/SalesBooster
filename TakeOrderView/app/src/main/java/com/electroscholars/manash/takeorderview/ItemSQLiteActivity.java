@@ -45,21 +45,18 @@ public class ItemSQLiteActivity extends ListActivity {
 
         addNewItem = (Button) findViewById(R.id.addNewItem);
         getItemInfo = (Button) findViewById(R.id.getItemInfo);
-
         addNewItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 addItem();
             }
         });
-
         getItemInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getItemInfo();
             }
         });
-
         displayItems();
 
 
@@ -108,8 +105,7 @@ public class ItemSQLiteActivity extends ListActivity {
         View addView = layoutInflater.inflate(R.layout.dialog_layout, null);
         final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
 
-        addItemEditText = (EditText) addView.findViewById(R.id.addItemNameEditText);
-        addItemPriceEditText = (EditText) addView.findViewById(R.id.addItemPriceEditText);
+
 
         dialogBuilder.setView(addView);
 
