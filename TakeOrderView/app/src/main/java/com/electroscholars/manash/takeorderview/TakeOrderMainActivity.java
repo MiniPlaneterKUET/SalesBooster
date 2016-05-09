@@ -73,8 +73,7 @@ public class TakeOrderMainActivity extends AppCompatActivity {
 
         String[] hello = {"Hello", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World"};
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter <> (this, android.R.layout
-                .simple_spinner_item, hello);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter <> (this, android.R.layout.simple_spinner_dropdown_item, hello);
 
 
         spinner.setAdapter(arrayAdapter);
