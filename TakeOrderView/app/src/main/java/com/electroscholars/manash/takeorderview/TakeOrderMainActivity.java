@@ -2,6 +2,8 @@ package com.electroscholars.manash.takeorderview;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,12 +11,15 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ContentFrameLayout;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.GridLayout;
 import android.widget.GridView;
@@ -22,6 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
@@ -29,6 +35,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 import dev.dworks.libs.astickyheader.SectionedGridAdapter;
 
@@ -40,7 +47,52 @@ public class TakeOrderMainActivity extends AppCompatActivity {
         LayoutInflater inflater = this.getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.dialog_layout, null);
         dialogBuilder.setView(dialogView);
+
         AlertDialog alertDialog = dialogBuilder.create();
+        final Spinner spinner = (Spinner) dialogView.findViewById(R.id.spinner);
+
+
+        ItemDbHelper itemDbHelper = new ItemDbHelper(this);
+        SQLiteDatabase itemDb = itemDbHelper.getWritableDatabase();
+
+        List<String> items = new ArrayList<>();
+
+        Cursor cursor = itemDb.query(itemDbHelper.TABLE_NAME, itemDbHelper.TABLE_COLUMNS, null,
+                null, null, null, null);
+
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            String itemName = cursor.getString(itemDbHelper.COLNO_ITEM_NAME);
+            items.add(itemName);
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+
+        String[] itemArray = items.toArray(new String[items.size()]);
+
+        String[] hello = {"Hello", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World"};
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter <> (this, android.R.layout
+                .simple_spinner_item, hello);
+
+
+        spinner.setAdapter(arrayAdapter);
+
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(TakeOrderMainActivity.this, spinner.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
         alertDialog.show();
     }
 
