@@ -142,7 +142,8 @@
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:weightSum="1">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -156,7 +157,7 @@
                         android:layout_marginLeft="15dp"/>
 
                     <EditText
-                        android:layout_width="match_parent"
+                        android:layout_width="106dp"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
                         android:enabled="true"
@@ -165,7 +166,18 @@
                         android:id="@+id/discountEditText"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
-                        android:editable="true"/>
+                        android:editable="true"
+                        android:layout_weight="0.08"/>
+
+                    <Button
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="47dp"
+                        android:layout_height="40dp"
+                        android:text="C"
+                        android:id="@+id/discountClearButton"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="1.5dp"/>
+
                 </LinearLayout>
 
                 <Space
