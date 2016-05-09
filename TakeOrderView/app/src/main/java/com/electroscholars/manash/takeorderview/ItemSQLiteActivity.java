@@ -146,10 +146,10 @@ public class ItemSQLiteActivity extends ListActivity {
 
         itemDb.insert(itemDbHelper.TABLE_NAME, "item_name" ,
                 values);
-
-
-
     }
+
+
+
 
     @Override
     public void onDestroy(){
