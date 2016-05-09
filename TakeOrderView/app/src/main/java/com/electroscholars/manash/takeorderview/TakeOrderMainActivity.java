@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -50,6 +51,9 @@ public class TakeOrderMainActivity extends AppCompatActivity {
 
         AlertDialog alertDialog = dialogBuilder.create();
         final Spinner spinner = (Spinner) dialogView.findViewById(R.id.spinner);
+        final EditText rateEditText = (EditText) dialogView.findViewById(R.id.rateEditText);
+
+        rateEditText.setText("12345689");
 
 
         ItemDbHelper itemDbHelper = new ItemDbHelper(this);

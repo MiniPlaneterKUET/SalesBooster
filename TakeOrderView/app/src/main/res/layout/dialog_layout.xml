@@ -66,6 +66,88 @@
 
             </LinearLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_gravity="center"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Rate"
+                    android:id="@+id/priceRateTextView"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:enabled="false"
+                    android:textColor="@android:color/black"
+                    android:ems="10"
+                    android:id="@+id/rateEditText"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"/>
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_gravity="center"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Qty"
+                    android:id="@+id/qtyTextView"
+                    android:layout_marginLeft="15dp"/>
+
+                <EditText
+                    android:layout_width="103dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/editText"
+                    android:layout_marginLeft="25dp"
+                    android:text="0"/>
+
+                <ImageButton
+                    android:layout_width="45dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_add_black_48dp"
+                    android:scaleType="fitXY"
+                    android:id="@+id/incrementButton"/>
+
+                <ImageButton
+                    android:layout_width="45dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_remove_black_48dp"
+                    android:scaleType="fitXY"
+                    android:id="@+id/decrementButton"/>
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="47dp"
+                    android:layout_height="40dp"
+                    android:text="C"
+                    android:id="@+id/clearButton"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="1.5dp"/>
+            </LinearLayout>
+
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>
