@@ -15,7 +15,7 @@ public class ItemDbHelper extends SQLiteOpenHelper {
 
     public static final String[] TABLE_COLUMNS = new String[] {"_id", "item_name", "item_price"};
 
-    private static final String DB_FILENAME = "items.db";
+    private static final String DB_FILENAME = "items_ver2.db";
     private static final int DB_VERSION = 1;
 
     private static final String INITIAL_SCHEMA = "create table items (" +

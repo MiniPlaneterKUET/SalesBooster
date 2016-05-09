@@ -1,6 +1,7 @@
 package com.electroscholars.manash.takeorderview;
 
 import android.content.ClipData;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.renderscript.Sampler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -34,7 +36,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.database.DatabaseUtils;
 
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -160,8 +162,7 @@ public class TakeOrderMainActivity extends AppCompatActivity {
         cursor.close();
 
         String[] itemArray = items.toArray(new String[items.size()]);
-
-        String[] hello = {"Hello", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World", "World"};
+        
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter <> (this, android.R.layout
                 .simple_spinner_dropdown_item, itemArray);
@@ -174,7 +175,8 @@ public class TakeOrderMainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String select = spinner.getItemAtPosition(i).toString();
-
+//                Log.d("itemname", getPrice(select));
+                rateEditText.setText(getPrice(select));
                 Toast.makeText(TakeOrderMainActivity.this, spinner.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
             }
 
@@ -190,6 +192,22 @@ public class TakeOrderMainActivity extends AppCompatActivity {
     }
 
 
+    public String getPrice(String itemName){
+
+        String command = "SELECT item_price FROM 'items' WHERE item_name LIKE " + "'" +
+                itemName + "'";
+
+        Cursor c = itemDatabase.rawQuery(command, null);
+
+        int price = 0;
+
+        c.moveToFirst();
+
+        price = c.getInt(0);
+
+        Log.d("dump", String.valueOf(price));
+        return String.valueOf(price);
+    }
 
 
 
