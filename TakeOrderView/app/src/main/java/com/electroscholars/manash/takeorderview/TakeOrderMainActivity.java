@@ -162,7 +162,7 @@ public class TakeOrderMainActivity extends AppCompatActivity {
         cursor.close();
 
         String[] itemArray = items.toArray(new String[items.size()]);
-        
+
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter <> (this, android.R.layout
                 .simple_spinner_dropdown_item, itemArray);
