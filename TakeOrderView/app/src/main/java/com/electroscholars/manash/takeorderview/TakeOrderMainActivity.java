@@ -17,7 +17,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
@@ -61,6 +64,26 @@ public class TakeOrderMainActivity extends AppCompatActivity {
     private ImageButton decrementButton;
     private Button qtyClearButton;
 
+    private int totalPrice;
+    private int itemRate;
+
+
+    //Returns integer
+    public static Integer getInt(String number){
+        if (number.isEmpty())
+            return null;
+        return Integer.valueOf(number);
+    }
+
+    //Returns integer from edittext [checks for null stings]
+    public static Integer getIntFromEditText(EditText editText){
+        if (!editText.getText().toString().isEmpty())
+            return getInt(editText.getText().toString());
+        return null;
+    }
+
+
+    //Creates the custom AlertDialog box
     public void createDialog(){
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
 
@@ -98,7 +121,7 @@ public class TakeOrderMainActivity extends AppCompatActivity {
         decrementButton = (ImageButton) dialogView.findViewById(R.id.decrementButton);
         qtyClearButton = (Button) dialogView.findViewById(R.id.qtyClearButton);
 
-
+        //Adds a 0 on editText
         qtyClearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,6 +130,7 @@ public class TakeOrderMainActivity extends AppCompatActivity {
             }
         });
 
+        //Increases current value by 1
         incrementButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,6 +146,7 @@ public class TakeOrderMainActivity extends AppCompatActivity {
             }
         });
 
+        //Decreases current value by 1
         decrementButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -139,31 +164,25 @@ public class TakeOrderMainActivity extends AppCompatActivity {
             }
         });
 
-        rateEditText.setText("12345689");
 
-
-
-
+        //Database workaround
         itemDatabaseHelper = new ItemDbHelper(this);
-         itemDatabase = itemDatabaseHelper.getWritableDatabase();
-
+        itemDatabase = itemDatabaseHelper.getWritableDatabase();
         List<String> items = new ArrayList<>();
-
         Cursor cursor = itemDatabase.query(itemDatabaseHelper.TABLE_NAME, itemDatabaseHelper.TABLE_COLUMNS, null,
                 null, null, null, null);
-
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             String itemName = cursor.getString(itemDatabaseHelper.COLNO_ITEM_NAME);
             items.add(itemName);
             cursor.moveToNext();
         }
-
         cursor.close();
 
+        //Converts StringArray to regular String Array
         String[] itemArray = items.toArray(new String[items.size()]);
 
-
+        //Array Adapter for spinner
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter <> (this, android.R.layout
                 .simple_spinner_dropdown_item, itemArray);
 
@@ -186,8 +205,27 @@ public class TakeOrderMainActivity extends AppCompatActivity {
             }
         });
 
-        alertDialog.setTitle("Add New Item");
 
+        //Change the price when quantity is changed
+        //Listens to the change in qty
+        qtyEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                Log.d("QtyEntry", editable.toString());
+            }
+        });
+
+        alertDialog.setTitle("Add New Item");
         alertDialog.show();
     }
 
