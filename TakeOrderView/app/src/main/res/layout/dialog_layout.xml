@@ -107,7 +107,7 @@
                         android:layout_marginLeft="15dp"/>
 
                     <EditText
-                        android:layout_width="103dp"
+                        android:layout_width="74dp"
                         android:layout_height="wrap_content"
                         android:inputType="number"
                         android:ems="10"
@@ -159,7 +159,7 @@
                         android:layout_marginLeft="15dp"/>
 
                     <EditText
-                        android:layout_width="106dp"
+                        android:layout_width="74dp"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
                         android:enabled="true"
@@ -169,7 +169,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:editable="true"
-                        android:layout_weight="0.08"/>
+                        />
 
                     <Button
                         style="?android:attr/buttonStyleSmall"

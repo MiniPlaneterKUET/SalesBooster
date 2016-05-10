@@ -47,6 +47,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 import dev.dworks.libs.astickyheader.SectionedGridAdapter;
 
@@ -68,6 +69,8 @@ public class TakeOrderMainActivity extends AppCompatActivity {
     private Button qtyClearButton;
     private Button discountClearButton;
 
+    private GridView headerGridView;
+
     private float totalPrice;
     private int itemRate;
     private int itemQuantity = 0;
@@ -87,6 +90,35 @@ public class TakeOrderMainActivity extends AppCompatActivity {
         if (!editText.getText().toString().isEmpty())
             return getInt(editText.getText().toString());
         return null;
+    }
+
+
+    //Updates discount
+    public void updateDiscount(){
+
+        if (!discountEditText.getText().toString().isEmpty()) {
+
+            discount = totalPrice * Float.parseFloat(discountEditText.getText().toString()) / (float) 100.0;
+            int discountPrice = (int) (totalPrice - discount);
+            totalPrice = discountPrice;
+            totalPriceEditText.setText(String.valueOf(discountPrice));
+        } else {
+            discount = (float) 0.0;
+        }
+    }
+
+    //Updates price
+    public void updatePrice(){
+        if (!qtyEditText.getText().toString().isEmpty()){
+            totalQtyEditText.setText(qtyEditText.getText().toString());
+            itemRate = Integer.valueOf(rateEditText.getText().toString());
+            totalPrice = (float) itemRate * Integer.valueOf(qtyEditText.getText().toString());
+            updateDiscount();
+            totalPriceEditText.setText(String.valueOf(totalPrice));
+            Log.d("totalprice", String.valueOf(totalPrice));
+        } else {
+            totalQtyEditText.setText("0");
+        }
     }
 
 
@@ -141,6 +173,7 @@ public class TakeOrderMainActivity extends AppCompatActivity {
         qtyClearButton = (Button) dialogView.findViewById(R.id.qtyClearButton);
         discountClearButton = (Button) dialogView.findViewById(R.id.discountClearButton);
         discountEditText = (EditText) dialogView.findViewById(R.id.discountEditText);
+
 
         //Adds a 0 on beginning discountEditText
         discountEditText.setText("");
@@ -261,16 +294,7 @@ public class TakeOrderMainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-
-                if (!editable.toString().isEmpty()){
-                    totalQtyEditText.setText(editable.toString());
-                    itemRate = Integer.valueOf(rateEditText.getText().toString());
-                    totalPrice = (float) itemRate * Integer.valueOf(qtyEditText.getText().toString());
-                    totalPriceEditText.setText(String.valueOf(totalPrice));
-                    Log.d("totalprice", String.valueOf(totalPrice));
-                } else {
-                    totalQtyEditText.setText("0");
-                }
+                updatePrice();
             }
         });
 
@@ -289,16 +313,7 @@ public class TakeOrderMainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 Log.d("discountEditText", editable.toString());
-
-                if (!editable.toString().isEmpty()) {
-
-                    discount = totalPrice * Float.parseFloat(editable.toString()) / (float) 100.0;
-                    int discountPrice = (int) (totalPrice - discount);
-
-                    totalPriceEditText.setText(String.valueOf(discountPrice));
-                } else {
-                    discount = (float) 0.0;
-                }
+                updatePrice();
 
             }
         });
@@ -332,6 +347,9 @@ public class TakeOrderMainActivity extends AppCompatActivity {
 
     }
 
+
+    //Adapter for gridview
+    //TODO: Need to adapt for Item Name, item price rate, quantity, discount
     public class TextViewAdapter extends BaseAdapter{
         public ArrayList<Integer> id;
 
@@ -342,6 +360,8 @@ public class TakeOrderMainActivity extends AppCompatActivity {
             id = new ArrayList<>();
             strings = new ArrayList<>();
         }
+
+
 
         public int getCount(){
 //            return textId.length;
@@ -407,8 +427,21 @@ public class TakeOrderMainActivity extends AppCompatActivity {
         });
 
         gridView = (GridView) findViewById(R.id.gridView);
+
+        //GridView for headers
+        headerGridView = (GridView) findViewById(R.id.headerGridView);
+
+
         adapter = new TextViewAdapter(this);
-        gridView.setAdapter(adapter);
+
+        String[] voda = {"Item", "CPI", "Disc", "Qty", "Total"};
+
+
+
+        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>(this, R.layout
+                .spinner_layout, voda);
+
+        headerGridView.setAdapter(stringArrayAdapter);
 
 //        Intent intent = new Intent(this, ItemSQLiteActivity.class);
 //        startActivity(intent);

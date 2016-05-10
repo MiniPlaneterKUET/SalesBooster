@@ -14,12 +14,24 @@
     tools:showIn="@layout/activity_take_order_main"
     android:id="@+id/relativeLayout">
 
-    <GridView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/gridView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:columnWidth="30dp"
-        android:numColumns="5"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridView
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:id="@+id/headerGridView"
+            android:numColumns="5"/>
+
+        <GridView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/gridView"
+            android:layout_alignParentStart="true"
+            android:columnWidth="30dp"
+            android:numColumns="5"/>
+    </LinearLayout>
+
 </RelativeLayout>
