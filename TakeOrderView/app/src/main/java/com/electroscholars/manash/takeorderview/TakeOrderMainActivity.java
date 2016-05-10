@@ -228,7 +228,7 @@ public class TakeOrderMainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String select = spinner.getItemAtPosition(i).toString();
-//                Log.d("itemname", getPrice(select));
+
                 rateEditText.setText(getPrice(select));
                 Toast.makeText(TakeOrderMainActivity.this, spinner.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
 
@@ -237,7 +237,6 @@ public class TakeOrderMainActivity extends AppCompatActivity {
                 itemRate = Integer.valueOf(rateEditText.getText().toString());
                 totalPrice = (float) itemRate * Integer.valueOf(qtyEditText.getText().toString());
                 totalPriceEditText.setText(String.valueOf(totalPrice));
-
             }
 
             @Override
@@ -294,8 +293,9 @@ public class TakeOrderMainActivity extends AppCompatActivity {
                 if (!editable.toString().isEmpty()) {
 
                     discount = totalPrice * Float.parseFloat(editable.toString()) / (float) 100.0;
+                    int discountPrice = (int) (totalPrice - discount);
 
-                    Log.d("discount", String.valueOf(discount));
+                    totalPriceEditText.setText(String.valueOf(discountPrice));
                 } else {
                     discount = (float) 0.0;
                 }
