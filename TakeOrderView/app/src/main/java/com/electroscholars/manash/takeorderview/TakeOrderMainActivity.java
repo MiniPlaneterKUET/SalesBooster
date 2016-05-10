@@ -60,13 +60,18 @@ public class TakeOrderMainActivity extends AppCompatActivity {
     private EditText qtyEditText;
     private EditText totalPriceEditText;
     private EditText totalQtyEditText;
+
+    private EditText discountEditText;
+
     private ImageButton incrementButton;
     private ImageButton decrementButton;
     private Button qtyClearButton;
+    private Button discountClearButton;
 
-    private int totalPrice;
+    private float totalPrice;
     private int itemRate;
-
+    private int itemQuantity = 0;
+    private float discount = 0;
 
     //Returns integer
     public static Integer getInt(String number){
@@ -120,6 +125,12 @@ public class TakeOrderMainActivity extends AppCompatActivity {
         incrementButton = (ImageButton) dialogView.findViewById(R.id.incrementButton);
         decrementButton = (ImageButton) dialogView.findViewById(R.id.decrementButton);
         qtyClearButton = (Button) dialogView.findViewById(R.id.qtyClearButton);
+        discountClearButton = (Button) dialogView.findViewById(R.id.discountClearButton);
+        discountEditText = (EditText) dialogView.findViewById(R.id.discountEditText);
+
+        //Adds a 0 on beginning discountEditText
+        discountEditText.setText("");
+        discountEditText.append("0");
 
         //Adds a 0 on editText
         qtyClearButton.setOnClickListener(new View.OnClickListener() {
@@ -127,6 +138,15 @@ public class TakeOrderMainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 qtyEditText.setText("");
                 qtyEditText.append("0");
+            }
+        });
+
+        //Adds a 0 on discountEditText
+        discountClearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                discountEditText.setText("");
+                discountEditText.append("0");
             }
         });
 
@@ -221,9 +241,43 @@ public class TakeOrderMainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                Log.d("QtyEntry", editable.toString());
+
+                if (!editable.toString().isEmpty()){
+                    itemRate = Integer.valueOf(rateEditText.getText().toString());
+                    totalPrice = (float) itemRate * Integer.valueOf(qtyEditText.getText().toString());
+                    Log.d("totalprice", String.valueOf(totalPrice));
+                }
             }
         });
+
+        //Listens to the change in DiscountEditText
+        discountEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                Log.d("discountEditText", editable.toString());
+
+                if (!editable.toString().isEmpty()) {
+
+                    discount = totalPrice * Float.parseFloat(editable.toString()) / (float) 100.0;
+
+                    Log.d("discount", String.valueOf(discount));
+                } else {
+                    discount = (float) 0.0;
+                }
+
+            }
+        });
+
 
         alertDialog.setTitle("Add New Item");
         alertDialog.show();

@@ -82,7 +82,9 @@
                         android:ems="10"
                         android:id="@+id/rateEditText"
                         android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"/>
+                        android:layout_marginRight="15dp"
+                        android:focusable="false"
+                        android:numeric="integer"/>
                 </LinearLayout>
 
                 <Space
