@@ -232,6 +232,12 @@ public class TakeOrderMainActivity extends AppCompatActivity {
                 rateEditText.setText(getPrice(select));
                 Toast.makeText(TakeOrderMainActivity.this, spinner.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
 
+                //Updates fields on change of items
+                totalQtyEditText.setText(qtyEditText.getText().toString());
+                itemRate = Integer.valueOf(rateEditText.getText().toString());
+                totalPrice = (float) itemRate * Integer.valueOf(qtyEditText.getText().toString());
+                totalPriceEditText.setText(String.valueOf(totalPrice));
+
             }
 
             @Override
@@ -258,10 +264,13 @@ public class TakeOrderMainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
 
                 if (!editable.toString().isEmpty()){
+                    totalQtyEditText.setText(editable.toString());
                     itemRate = Integer.valueOf(rateEditText.getText().toString());
                     totalPrice = (float) itemRate * Integer.valueOf(qtyEditText.getText().toString());
                     totalPriceEditText.setText(String.valueOf(totalPrice));
                     Log.d("totalprice", String.valueOf(totalPrice));
+                } else {
+                    totalQtyEditText.setText("0");
                 }
             }
         });
