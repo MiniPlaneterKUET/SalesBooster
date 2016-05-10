@@ -73,6 +73,8 @@ public class TakeOrderMainActivity extends AppCompatActivity {
     private int itemQuantity = 0;
     private float discount = 0;
 
+    boolean wasAddClicked = false;
+
     //Returns integer
     public static Integer getInt(String number){
         if (number.isEmpty())
@@ -91,13 +93,15 @@ public class TakeOrderMainActivity extends AppCompatActivity {
     //Creates the custom AlertDialog box
     public void createDialog(){
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-
+        wasAddClicked = false;
 
         //When Add Button is clicked
         dialogBuilder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
+                Toast.makeText(TakeOrderMainActivity.this, "Add was clicked,", Toast
+                        .LENGTH_SHORT).show();
+                wasAddClicked = true;
             }
         });
 
@@ -105,9 +109,19 @@ public class TakeOrderMainActivity extends AppCompatActivity {
         dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
+                wasAddClicked = false;
             }
         });
+
+        dialogBuilder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                if (!wasAddClicked)
+                    Toast.makeText(TakeOrderMainActivity.this, "Nothing was added!", Toast.LENGTH_SHORT)
+                        .show();
+            }
+        });
+
 
         LayoutInflater inflater = this.getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.dialog_layout, null);
@@ -217,6 +231,7 @@ public class TakeOrderMainActivity extends AppCompatActivity {
 //                Log.d("itemname", getPrice(select));
                 rateEditText.setText(getPrice(select));
                 Toast.makeText(TakeOrderMainActivity.this, spinner.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -245,6 +260,7 @@ public class TakeOrderMainActivity extends AppCompatActivity {
                 if (!editable.toString().isEmpty()){
                     itemRate = Integer.valueOf(rateEditText.getText().toString());
                     totalPrice = (float) itemRate * Integer.valueOf(qtyEditText.getText().toString());
+                    totalPriceEditText.setText(String.valueOf(totalPrice));
                     Log.d("totalprice", String.valueOf(totalPrice));
                 }
             }
@@ -302,6 +318,10 @@ public class TakeOrderMainActivity extends AppCompatActivity {
     }
 
 
+    //clears all fields
+    private void clearAll(){
+
+    }
 
     public class TextViewAdapter extends BaseAdapter{
         public ArrayList<Integer> id;
