@@ -76,21 +76,15 @@ public class TakeOrderMainActivity extends AppCompatActivity {
     private int itemQuantity = 0;
     private float discount = 0;
 
+
+    private String selectedItem;
+    private String selectedItemPriceRate;
+    private String selectedItemDiscount;
+    private String selectedItemQuantity;
+    private String selectedItemTotalPrice;
+
     boolean wasAddClicked = false;
 
-    //Returns integer
-    public static Integer getInt(String number){
-        if (number.isEmpty())
-            return null;
-        return Integer.valueOf(number);
-    }
-
-    //Returns integer from edittext [checks for null stings]
-    public static Integer getIntFromEditText(EditText editText){
-        if (!editText.getText().toString().isEmpty())
-            return getInt(editText.getText().toString());
-        return null;
-    }
 
 
     //Updates discount
@@ -134,6 +128,21 @@ public class TakeOrderMainActivity extends AppCompatActivity {
                 Toast.makeText(TakeOrderMainActivity.this, "Add was clicked,", Toast
                         .LENGTH_SHORT).show();
                 wasAddClicked = true;
+                selectedItemPriceRate = rateEditText.getText().toString();
+                selectedItemDiscount = discountEditText.getText().toString();
+                selectedItemQuantity = qtyEditText.getText().toString();
+                selectedItemTotalPrice = totalPriceEditText.getText().toString();
+
+                String[] itemDetails = {selectedItem, selectedItemPriceRate,
+                        selectedItemDiscount, selectedItemQuantity, selectedItemTotalPrice};
+
+
+                for (String value : itemDetails){
+                    adapter.addItem(value);
+                }
+
+                gridView.setAdapter(adapter);
+
             }
         });
 
@@ -261,6 +270,8 @@ public class TakeOrderMainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String select = spinner.getItemAtPosition(i).toString();
+
+                selectedItem = select;
 
                 rateEditText.setText(getPrice(select));
                 Toast.makeText(TakeOrderMainActivity.this, spinner.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
@@ -420,8 +431,6 @@ public class TakeOrderMainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                adapter.addItem("Hello World");
-                gridView.setAdapter(adapter);
                 createDialog();
             }
         });
@@ -434,12 +443,12 @@ public class TakeOrderMainActivity extends AppCompatActivity {
 
         adapter = new TextViewAdapter(this);
 
-        String[] voda = {"Item", "CPI", "Disc", "Qty", "Total"};
+        String[] headerItems = {"Item", "CPI", "Disc", "Qty", "Total"};
 
 
 
         ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>(this, R.layout
-                .spinner_layout, voda);
+                .spinner_layout, headerItems);
 
         headerGridView.setAdapter(stringArrayAdapter);
 

@@ -31,7 +31,8 @@
             android:id="@+id/gridView"
             android:layout_alignParentStart="true"
             android:columnWidth="30dp"
-            android:numColumns="5"/>
+            android:numColumns="5"
+            android:layout_marginBottom="50dp"/>
     </LinearLayout>
 
 </RelativeLayout>
