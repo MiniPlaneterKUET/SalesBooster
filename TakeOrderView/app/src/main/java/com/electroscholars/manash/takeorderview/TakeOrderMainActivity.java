@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.renderscript.Sampler;
+import android.support.annotation.LayoutRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -84,7 +85,6 @@ public class TakeOrderMainActivity extends AppCompatActivity {
     private String selectedItemTotalPrice;
 
     boolean wasAddClicked = false;
-
 
 
     //Updates discount
@@ -393,13 +393,16 @@ public class TakeOrderMainActivity extends AppCompatActivity {
 
             if (convertView == null){
                 textView = new TextView(context);
-                textView.setLayoutParams(new GridView.LayoutParams(100, 100));
             } else {
                 textView = (TextView) convertView;
             }
 
+            textView.setTextSize(17);
+            textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             textView.setText(strings.get(position));
-            textView.setTextColor(Color.RED);
+            textView.setTextColor(Color.DKGRAY);
+            textView.setShadowLayer(2, 4, 4, Color.LTGRAY);
+            textView.setPadding(0, 0, 0, 30);
             return textView;
         }
 
@@ -410,9 +413,9 @@ public class TakeOrderMainActivity extends AppCompatActivity {
         public void addItem(String item){
             strings.add(item);
         }
-
-
     }
+
+
 
     private GridView gridView;
     private RelativeLayout relativeLayout;
@@ -435,6 +438,8 @@ public class TakeOrderMainActivity extends AppCompatActivity {
             }
         });
 
+
+
         gridView = (GridView) findViewById(R.id.gridView);
 
         //GridView for headers
@@ -451,6 +456,14 @@ public class TakeOrderMainActivity extends AppCompatActivity {
                 .spinner_layout, headerItems);
 
         headerGridView.setAdapter(stringArrayAdapter);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.d("onItemClick","i: " + String.valueOf(i) + "       ");
+                Log.d("onItemClick", "l: " + String.valueOf(l) + "      ");
+            }
+        });
 
 //        Intent intent = new Intent(this, ItemSQLiteActivity.class);
 //        startActivity(intent);

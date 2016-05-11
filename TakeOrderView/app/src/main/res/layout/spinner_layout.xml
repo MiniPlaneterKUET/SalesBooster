@@ -12,5 +12,4 @@
     android:shadowDx="2"
     android:shadowDy="2"
     android:gravity="center"
-    android:padding="1dp"
     />
