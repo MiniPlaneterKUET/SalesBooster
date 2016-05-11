@@ -52,12 +52,12 @@ public class ClientViewMainActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position){
             ClientViewHolder clientViewHolder = (ClientViewHolder) viewHolder;
-            Client currentClient = clientList.get(position);
-            current = currentClient;
-            clientViewHolder.clientNameTextView.setText("Name: " + currentClient.getName());
-            clientViewHolder.clientContactTextView.setText("Contact: " + currentClient.getContact());
-            clientViewHolder.clientEmailTextView.setText("e-mail: " + currentClient.getE_mail());
-            clientViewHolder.clientAddressTextView.setText("Address: " + currentClient.getAddress());
+            current = clientList.get(position);
+
+            clientViewHolder.clientNameTextView.setText("Name: " + current.getName());
+            clientViewHolder.clientContactTextView.setText("Contact: " + current.getContact());
+            clientViewHolder.clientEmailTextView.setText("e-mail: " + current.getE_mail());
+            clientViewHolder.clientAddressTextView.setText("Address: " + current.getAddress());
 
         }
 
@@ -86,12 +86,18 @@ public class ClientViewMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 int itemPosition = clientRecyclerView.indexOfChild(v);
+
                 Log.d("Itemposition", String.valueOf(itemPosition));
 
                 LayoutInflater dialogClientLayoutInflater = getLayoutInflater();
                 View dialogClientView = dialogClientLayoutInflater.inflate(R.layout.dialog_view,
                         null);
 
+                TextView newNameTextView = (TextView) v.findViewById(R.id.clientNameTextView);
+                TextView newAddressTextView = (TextView) v.findViewById(R.id
+                        .clientAddressTextView);
+                TextView newContactTextView = (TextView) v.findViewById(R.id.contactTextView);
+                TextView newEmailTextView = (TextView) v.findViewById(R.id.e_mailTextView);
 
                 //Dialog textview fields
                 TextView dialogClientName = (TextView) dialogClientView.findViewById(R.id
@@ -103,10 +109,11 @@ public class ClientViewMainActivity extends AppCompatActivity {
                 TextView dialogClientEmail = (TextView) dialogClientView.findViewById(R.id
                         .dialogClientEmail);
 
-                dialogClientName.setText(current.getName());
-                dialogClientAddress.setText(current.getAddress());
-                dialogClientEmail.setText(current.getE_mail());
-                dialogClientContact.setText(current.getContact());
+                dialogClientName.setText(newNameTextView.getText().toString());
+                dialogClientAddress.setText(newAddressTextView.getText().toString());
+                dialogClientEmail.setText(newEmailTextView.getText().toString());
+                dialogClientContact.setText(newContactTextView.getText().toString());
+
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(ClientViewMainActivity.this);
                 builder.setTitle("Selected Client Info");
