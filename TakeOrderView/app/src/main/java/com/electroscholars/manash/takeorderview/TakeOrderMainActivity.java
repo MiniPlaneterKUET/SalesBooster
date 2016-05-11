@@ -54,6 +54,8 @@ import dev.dworks.libs.astickyheader.SectionedGridAdapter;
 
 public class TakeOrderMainActivity extends AppCompatActivity {
 
+    private final static int GRIDVIEW_COLUMN = 5;
+
     private ItemDbHelper itemDatabaseHelper;
     private SQLiteDatabase itemDatabase;
 
@@ -86,6 +88,10 @@ public class TakeOrderMainActivity extends AppCompatActivity {
 
     boolean wasAddClicked = false;
 
+    private ArrayList<String> itemDetailsList;
+    private ArrayAdapter<String> itemDetailsArrayAdapter;
+
+    private int row;
 
     //Updates discount
     public void updateDiscount(){
@@ -136,12 +142,22 @@ public class TakeOrderMainActivity extends AppCompatActivity {
                 String[] itemDetails = {selectedItem, selectedItemPriceRate,
                         selectedItemDiscount, selectedItemQuantity, selectedItemTotalPrice};
 
-
-                for (String value : itemDetails){
-                    adapter.addItem(value);
+                //Replaces previous values with the current one [checks for item name]
+                if (itemDetailsList.contains(selectedItem)){
+                    int index = itemDetailsList.indexOf(selectedItem);
+                    itemDetailsList.set(index + 2, selectedItemDiscount);
+                    itemDetailsList.set(index + 3, selectedItemQuantity);
+                    itemDetailsList.set(index + 4, selectedItemTotalPrice);
                 }
 
-                gridView.setAdapter(adapter);
+                else {
+
+                    for (String value : itemDetails) {
+                        itemDetailsList.add(value);
+                    }
+                }
+
+                gridView.setAdapter(itemDetailsArrayAdapter);
 
             }
         });
@@ -465,8 +481,52 @@ public class TakeOrderMainActivity extends AppCompatActivity {
             }
         });
 
+        itemDetailsList = new ArrayList<>();
+
+        itemDetailsArrayAdapter = new ArrayAdapter<String>(this, R.layout.item_grid_layout_text,
+                itemDetailsList);
+
 //        Intent intent = new Intent(this, ItemSQLiteActivity.class);
 //        startActivity(intent);
+
+
+        //Delete item on long click, shows a AlertDialog to verify
+        gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //Gets row from index
+                row = (int) Math.floor(i / GRIDVIEW_COLUMN + 1);
+
+                AlertDialog.Builder confirmDialogBuilder = new AlertDialog.Builder
+                        (TakeOrderMainActivity.this);
+
+                confirmDialogBuilder.setTitle("Do you want to delete row " + String.valueOf(row)
+                        + " ?");
+                confirmDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        int removeFromIndex = (row - 1) * GRIDVIEW_COLUMN;
+                        for (int j = 0; j < GRIDVIEW_COLUMN; j++){
+                            itemDetailsList.remove(removeFromIndex);
+                        }
+                        gridView.setAdapter(itemDetailsArrayAdapter);
+                        Toast.makeText(getApplicationContext(), "Successfully deleted!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                confirmDialogBuilder.setNegativeButton("No!", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getApplicationContext(), "Nothing was changed!", Toast
+                                .LENGTH_SHORT).show();
+                    }
+                });
+
+                AlertDialog confirmDialog = confirmDialogBuilder.create();
+                confirmDialog.show();
+                return false;
+            }
+        });
 
     }
 
