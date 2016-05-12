@@ -85,7 +85,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Your Sales Count"
         android:id="@+id/salesCountTextView"
-        android:textSize="17dp"/>
+        android:textSize="17dp"
+        android:layout_marginLeft="8dp"/>
 
 
 </LinearLayout>
