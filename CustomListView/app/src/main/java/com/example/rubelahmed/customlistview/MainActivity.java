@@ -1,9 +1,13 @@
 package com.example.rubelahmed.customlistview;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.ListViewCompat;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,5 +42,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         newsListView = (ListView) findViewById(R.id.newsListView);
         newsListView.setAdapter(new NewsAdapter(MainActivity.this, headLines, content, date));
+
+        newsListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity
+                        .this);
+                alertDialogBuilder.setTitle("Selected News");
+                TextView title = (TextView) view.findViewById(R.id.newsHeadlineTextView);
+                alertDialogBuilder.setMessage(title.getText().toString());
+
+                AlertDialog dialog = alertDialogBuilder.create();
+                dialog.show();
+                return false;
+            }
+        });
     }
 }
