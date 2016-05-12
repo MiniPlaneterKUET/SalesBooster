@@ -9,14 +9,27 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView newsListView;
 
-    public static String[] headlines = {"C (programming language)", "C++ (programming language)",
-            "JAVA (programming language)", "PHP: Hypertext Preprocessor"};
-    public static String[] content = {"C was originally developed by Dennis Ritchie between 1969 and 1973",
-            "C++ is a middle-level programming language developed by Bjarne Stroustrup",
-            "Java is a general-purpose computer programming language that is concurrent, class-based," +
-                    " object-oriented, and specifically designed ", "Server-side HTML embedded scripting language. " +
-            "It provides web developers with a full suite of tools for building dynamic websites"};
-    public static String[] date = {"29/10/1994", "20/12/2015", "19/1/1995", "11/11/2011"};
+
+    public static String[] date = {"29th, Dec 1994", "29th, Dec 1994", "29th, Dec 1994" , "29th, " +
+            "Dec 1994" , "29th, Dec 1994", "29th, Dec 1994"};
+
+    public static String[] headLines = {"New Item Added",
+                                        "Item Price Updated",
+                                        "Item Price Reduced",
+                                        "Item sold out",
+                                        "Delivery will be delayed",
+                                        "Meeting at 2 PM"
+
+    };
+
+    public static String[] content  = {"A new item was added to the inventory",
+                                    "Item of the price has been updated",
+                                    "item of the price has been reduced",
+                                    "Item sold out!",
+                                    "Upcoming delivery to this shop will be delayed",
+                                    "All representatives are requested to come to the meeting at " +
+                                            "2 PM"};
+
 
 
     @Override
@@ -24,6 +37,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         newsListView = (ListView) findViewById(R.id.newsListView);
-        newsListView.setAdapter(new NewsAdapter(MainActivity.this, headlines, content, date));
+        newsListView.setAdapter(new NewsAdapter(MainActivity.this, headLines, content, date));
     }
 }

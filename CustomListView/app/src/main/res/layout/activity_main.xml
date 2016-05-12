@@ -27,6 +27,6 @@
         android:layout_marginTop="33dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="8dp"
-        android:listSelector="@android:color/darker_gray"
+        android:background="@drawable/border_ui_2"
         android:choiceMode="singleChoice"/>
 </RelativeLayout>
