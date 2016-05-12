@@ -16,11 +16,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Target vs Sales Chart!"
+        android:text="Target vs Sales Chart"
         android:textSize="25dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/textView"/>
+        android:id="@+id/targetVsSalesChartTextView"
+        android:layout_gravity="center"/>
 
     <org.eazegraph.lib.charts.PieChart
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -31,7 +32,7 @@
         app:egLegendTextSize="18sp"
         app:egUsePieRotation="true"
         app:egValueTextSize="36sp"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/targetVsSalesChartTextView"
         android:layout_alignParentStart="true"
         android:layout_marginTop="38dp"/>
 
@@ -57,8 +58,8 @@
             app:met_clearButton="true"
             app:met_helperText="Set Target"
             android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/textView"
-            android:layout_alignEnd="@+id/textView"
+            android:layout_alignStart="@+id/targetVsSalesChartTextView"
+            android:layout_alignEnd="@+id/targetVsSalesChartTextView"
             android:layout_gravity="bottom"
             android:layout_weight="0.06"
             />
@@ -83,7 +84,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Your Sales Count"
-        android:id="@+id/salesCountTextView"/>
+        android:id="@+id/salesCountTextView"
+        android:textSize="17dp"/>
 
 
 </LinearLayout>
