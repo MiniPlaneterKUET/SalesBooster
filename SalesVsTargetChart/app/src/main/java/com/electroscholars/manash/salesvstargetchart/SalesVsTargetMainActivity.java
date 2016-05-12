@@ -1,5 +1,7 @@
 package com.electroscholars.manash.salesvstargetchart;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +16,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -45,6 +50,14 @@ public class SalesVsTargetMainActivity extends AppCompatActivity {
     private PieModel remainingPieModel;
     private PieModel salesPieModel;
 
+    private TextView salesCountTextView;
+
+    public static void hideSoftKeyboard (Activity activity, View view)
+    {
+        InputMethodManager imm = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getApplicationWindowToken(), 0);
+    }
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -59,6 +72,9 @@ public class SalesVsTargetMainActivity extends AppCompatActivity {
                 (SALES_COLOR));
         remainingPieModel = new PieModel(REMAINING, REMAINING_COUNT, Color.parseColor
                 (REMAINING_COLOR));
+        salesCountTextView = (TextView) findViewById(R.id.salesCountTextView);
+
+        salesCountTextView.setText("Current Sales Count: " + String.valueOf(SALES_COUNT));
 
         //Adding Listener
         updateTargetButton.setOnClickListener(new View.OnClickListener() {
@@ -68,12 +84,13 @@ public class SalesVsTargetMainActivity extends AppCompatActivity {
                     Toast.makeText(SalesVsTargetMainActivity.this, "Target is Empty!", Toast
                             .LENGTH_LONG).show();
                 } else {
+                    hideSoftKeyboard(SalesVsTargetMainActivity.this, view);
                     TARGET_COUNT = Integer.valueOf(setTargetEditText.getText().toString());
                     REMAINING_COUNT = TARGET_COUNT - SALES_COUNT;
-                    salesPieModel.setValue(REMAINING_COUNT);
+                    remainingPieModel.setValue(REMAINING_COUNT);
                     salesVsTargetPieChart.clearChart();
-                    salesVsTargetPieChart.addPieSlice(remainingPieModel);
                     salesVsTargetPieChart.addPieSlice(salesPieModel);
+                    salesVsTargetPieChart.addPieSlice(remainingPieModel);
                     salesVsTargetPieChart.startAnimation();
                 }
             }
