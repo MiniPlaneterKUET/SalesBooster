@@ -94,6 +94,7 @@ public class LogINActivity extends AppCompatActivity {
 
                                         Intent intent = new Intent(LogINActivity.this, MainActivity.class);
                                         startActivity(intent);
+                                        finish();
                                     } else {
                                         Snackbar.make(coordinatorLayout, "Wrong password", Snackbar.LENGTH_LONG).show();
                                     }

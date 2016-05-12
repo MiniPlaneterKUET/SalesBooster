@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:orientation="vertical">
+
         <include
             android:id="@+id/toolbar"
             layout="@layout/toolbar" />
@@ -29,37 +30,40 @@
             android:layout_height="100dp"
             android:background="@drawable/circle"
             android:drawableTop="@drawable/ic_view_clients"
-            android:paddingTop="10dp"
-            android:paddingBottom="8dp"
+            android:paddingBottom="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:paddingTop="10dp"
             android:text="View clients"
+            android:textAllCaps="false"
             android:textColor="#fff"
             app:arc_origin="center" />
 
         <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/circle"
-        android:drawableTop="@drawable/ic_message"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="Message"
-        android:textColor="#fff"
-        app:arc_origin="center" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/circle"
+            android:drawableTop="@drawable/ic_message"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:text="Message"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            app:arc_origin="center" />
 
         <Button
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/circle"
             android:drawableTop="@drawable/ic_news"
-            android:paddingTop="10dp"
             android:paddingBottom="8dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:paddingTop="10dp"
             android:text="News"
+            android:textAllCaps="false"
             android:textColor="#fff"
             app:arc_origin="center" />
 
@@ -68,11 +72,12 @@
             android:layout_height="100dp"
             android:background="@drawable/circle"
             android:drawableTop="@drawable/ic_take_order"
-            android:paddingTop="10dp"
             android:paddingBottom="8dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="take order"
+            android:paddingTop="10dp"
+            android:text="Take order"
+            android:textAllCaps="false"
             android:textColor="#fff"
             app:arc_origin="center" />
 
@@ -81,11 +86,12 @@
             android:layout_height="100dp"
             android:background="@drawable/circle"
             android:drawableTop="@drawable/ic_target_vs_sell"
-            android:paddingTop="10dp"
             android:paddingBottom="8dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="Target vs Sell"
+            android:paddingTop="10dp"
+            android:text="Target vs Sales"
+            android:textAllCaps="false"
             android:textColor="#fff"
             app:arc_origin="center" />
 

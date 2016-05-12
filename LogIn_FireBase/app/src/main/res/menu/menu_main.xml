@@ -9,7 +9,7 @@
         app:showAsAction="ifRoom|withText">
     <menu>
         <item
-            android:id="@+id/action_dropdown1"
+            android:id="@+id/logOut"
             android:title="Log out" />
 
     </menu>
