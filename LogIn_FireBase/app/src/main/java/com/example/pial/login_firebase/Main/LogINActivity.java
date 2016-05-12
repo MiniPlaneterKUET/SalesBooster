@@ -13,9 +13,11 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
+import com.example.pial.login_firebase.Model.SetPreferences;
 import com.example.pial.login_firebase.Model.User;
 import com.example.pial.login_firebase.R;
 import com.firebase.client.DataSnapshot;
@@ -35,11 +37,19 @@ public class LogINActivity extends AppCompatActivity {
     public String password;
     public Firebase ref;
 
+    private Toolbar mToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
         setContentView(R.layout.activity_log_in);
+
+        //Setting ToolBar
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
         userEditText = (MaterialEditText) findViewById(R.id.usernameEditText);
@@ -59,16 +69,12 @@ public class LogINActivity extends AppCompatActivity {
                         activeNetwork.isConnectedOrConnecting();
 
                 if (isConnected) {
-                    Log.i("Check", isConnected + "");
                     username = userEditText.getText().toString();
                     password = passwordEdtText.getText().toString();
 
-                    Log.i(TAG + " username", userEditText.getText().toString());
-                    Log.i(TAG + " password", passwordEdtText.getText().toString());
 
                     //Checking username and password is not empty
-                    if (!username.isEmpty() && !password.isEmpty()){
-                        Log.i("Check","hahhadhah");
+                    if (!username.isEmpty() && !password.isEmpty()) {
                         //firebase object
                         ref = new Firebase("https://sales-booster.firebaseio.com/User").child(username);
 
@@ -78,10 +84,22 @@ public class LogINActivity extends AppCompatActivity {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 if (dataSnapshot.exists()) {
-                                    Snackbar.make(coordinatorLayout, "Success", Snackbar.LENGTH_LONG).show();
+                                    //getting password from Firebase
+                                    User user = dataSnapshot.getValue(User.class);
+                                    String pass = user.getPassWord();
+                                    if (password.equals(pass)) {
+                                        // Saving username in Shared preferences for Session
+                                        SetPreferences preferences=new SetPreferences();
+                                        preferences.setPreference(getApplicationContext(),username);
+
+                                        Intent intent = new Intent(LogINActivity.this, MainActivity.class);
+                                        startActivity(intent);
+                                    } else {
+                                        Snackbar.make(coordinatorLayout, "Wrong password", Snackbar.LENGTH_LONG).show();
+                                    }
 
                                 } else {
-                                    Snackbar.make(coordinatorLayout, "Wrong username or password", Snackbar.LENGTH_LONG).show();
+                                    Snackbar.make(coordinatorLayout, "Wrong username", Snackbar.LENGTH_LONG).show();
                                 }
                             }
 
@@ -90,8 +108,7 @@ public class LogINActivity extends AppCompatActivity {
 
                             }
                         });
-                    }
-                        else {
+                    } else {
                         //Checking username or password is null
                         Snackbar.make(coordinatorLayout, "Please enter username or password", Snackbar.LENGTH_LONG).show();
                     }

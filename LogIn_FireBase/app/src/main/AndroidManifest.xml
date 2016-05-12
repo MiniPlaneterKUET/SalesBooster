@@ -14,11 +14,16 @@
         <activity android:name=".Main.LogINActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Main.MainActivity" />
+        <activity android:name=".Main.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Main.MainActivity"></activity>
     </application>
 
 </manifest>
