@@ -25,4 +25,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.github.blackfizz:eazegraph:1.2.2@aar'
     compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
+    compile 'info.hoang8f:fbutton:1.0.5'
 }

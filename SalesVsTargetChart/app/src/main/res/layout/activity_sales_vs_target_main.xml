@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.electroscholars.manash.salesvstargetchart.SalesVsTargetMainActivity">
 
@@ -22,7 +24,7 @@
 
     <org.eazegraph.lib.charts.PieChart
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/piechart"
+        android:id="@+id/salesVsTargetPieChart"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:padding="8dp"
@@ -33,4 +35,47 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="38dp"/>
 
-</RelativeLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="center"
+        android:weightSum="1"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="15dp">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="152dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/setTargetEditText"
+            app:met_floatingLabel="normal"
+            app:met_floatingLabelText="Set Target"
+            android:text="Set Target"
+            android:inputType="numberDecimal"
+            app:met_clearButton="true"
+            app:met_helperText="Set Target"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/textView"
+            android:layout_alignEnd="@+id/textView"
+            android:layout_gravity="bottom"
+            android:layout_weight="0.06"
+            />
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/updateChartButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            fbutton:buttonColor="@color/fbutton_color_green_sea"
+            fbutton:shadowColor="@color/fbutton_color_emerald"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="5dp"
+            fbutton:cornerRadius="5dp"
+            android:layout_gravity="right"
+            android:layout_marginLeft="15dp"/>
+    </LinearLayout>
+
+
+</LinearLayout>
