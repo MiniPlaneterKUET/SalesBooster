@@ -5,7 +5,7 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main.LogINActivity">
+    tools:context="com.electroscholars.manash.salesboostercomplete.Authentication.LogInActivity">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -25,7 +25,7 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context=".Main.LogINActivity">
+        tools:context="com.electroscholars.manash.salesboostercomplete.LogInActivity">
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/usernameEditText"
@@ -71,7 +71,7 @@
             fbutton:shadowEnabled="true"
             fbutton:shadowHeight="5dp" />
 
-        <com.example.pial.login_firebase.Main.Typewriter
+        <com.electroscholars.manash.salesboostercomplete.HelperClass.TypeWriter
             android:id="@+id/salesBoosterTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

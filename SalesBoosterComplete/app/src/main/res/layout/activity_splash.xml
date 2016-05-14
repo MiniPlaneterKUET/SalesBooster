@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.pial.login_firebase.Main.Splash">
+    tools:context="com.electroscholars.manash.salesboostercomplete.Splash.SplashActivity">
 
     <TextView
         android:textColor="#009688"
