@@ -29,4 +29,5 @@ dependencies {
     compile 'com.github.dmytrodanylyk.android-process-button:library:1.0.4'
     compile 'com.firebase:firebase-client-android:2.5.2+'
     compile 'com.ogaclejapan.arclayout:library:1.1.0@aar'
+    compile 'com.vstechlab.easyfonts:easyfonts:1.0.0'
 }

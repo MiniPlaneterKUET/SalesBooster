@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import com.electroscholars.manash.salesboostercomplete.HelperClass.SetPreferences;
 import com.electroscholars.manash.salesboostercomplete.HelperClass.TypeWriter;
@@ -26,7 +27,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import info.hoang8f.widget.FButton;
 import com.electroscholars.manash.salesboostercomplete.R;
-
+import com.vstechlab.easyfonts.EasyFonts;
 
 
 public class LogInActivity extends AppCompatActivity {
@@ -50,15 +51,12 @@ public class LogInActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
 
-    private TypeWriter salesBoosterTitleTextView;
+    private TextView salesBoosterTitleTextView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
         setContentView(R.layout.activity_log_in);
-        salesBoosterTitleTextView = (TypeWriter) findViewById(R.id.salesBoosterTextView);
-        salesBoosterTitleTextView.setText(SALES_BOOSTER_TITLE);
-        salesBoosterTitleTextView.animate();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -69,6 +67,9 @@ public class LogInActivity extends AppCompatActivity {
         usernameEditText = (MaterialEditText) findViewById(R.id.usernameEditText);
         passwordEditText = (MaterialEditText) findViewById(R.id.passwordEditText);
         loginButton = (FButton) findViewById(R.id.logInButton);
+        salesBoosterTitleTextView = (TextView) findViewById(R.id.salesBoosterTextView);
+
+        salesBoosterTitleTextView.setTypeface(EasyFonts.captureIt(this));
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +118,13 @@ public class LogInActivity extends AppCompatActivity {
                             }
                         });
                     } else {
-                        Snackbar snackbar = Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_SHORT).setAction("Turn on", new View.OnClickListener() {
+
+                        Snackbar.make(coordinatorLayout, "Enter username and password to " +
+                                "continue", Snackbar.LENGTH_SHORT).show();
+
+                    }
+                } else {
+                    Snackbar snackbar = Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_SHORT).setAction("Turn on", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
@@ -127,7 +134,6 @@ public class LogInActivity extends AppCompatActivity {
                         //Changing action message text color
                         snackbar.setActionTextColor(Color.YELLOW);
                         snackbar.show();
-                    }
                 }
             }
         });

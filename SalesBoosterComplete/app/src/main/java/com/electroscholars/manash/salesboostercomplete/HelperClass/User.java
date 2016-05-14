@@ -7,7 +7,7 @@ package com.electroscholars.manash.salesboostercomplete.HelperClass;
  */
 public class User {
     public String userID;
-    public String password;
+    public String passWord;
 
     public User(){
 
@@ -15,11 +15,11 @@ public class User {
 
     public User(String userID, String password){
         this.userID = userID;
-        this.password = password;
+        this.passWord = password;
     }
 
     public String getUserID(){ return this.userID; }
 
-    public String getPassword() { return this.password; }
+    public String getPassword() { return this.passWord; }
 
 }
