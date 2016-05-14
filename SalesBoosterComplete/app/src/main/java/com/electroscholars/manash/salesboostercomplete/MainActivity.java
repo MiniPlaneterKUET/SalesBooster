@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import com.electroscholars.manash.salesboostercomplete.Authentication.LogInActivity;
 import com.electroscholars.manash.salesboostercomplete.HelperClass.SetPreferences;
@@ -13,8 +14,17 @@ import com.electroscholars.manash.salesboostercomplete.HelperClass.SetPreference
 
 public class MainActivity extends AppCompatActivity {
 
+    private final static String HOMEPAGE_TITLE = "Homepage";
+
     //Toolbar
     private Toolbar toolbar;
+
+    //Buttons
+    private Button targetVsSalesButton;
+    private Button messageButton;
+    private Button takeOrderButton;
+    private Button newsButton;
+    private Button viewClientsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +38,17 @@ public class MainActivity extends AppCompatActivity {
         //Getting the support action bar
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle(HOMEPAGE_TITLE);
+
+        //Getting the button references
+        targetVsSalesButton = (Button) findViewById(R.id.targetVsSalesButton);
+        messageButton = (Button) findViewById(R.id.messageButton);
+        takeOrderButton = (Button) findViewById(R.id.takeOrderButton);
+        newsButton = (Button) findViewById(R.id.newsButton);
+        viewClientsButton = (Button) findViewById(R.id.viewClientsButton);
+
+        //Setting button on action listener
+        
 
     }
 

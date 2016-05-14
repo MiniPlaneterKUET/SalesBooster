@@ -31,6 +31,7 @@
         <Button
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:textSize="12dp"
             android:background="@drawable/circle"
             android:drawableTop="@drawable/ic_view_clients"
             android:paddingBottom="10dp"
@@ -40,11 +41,12 @@
             android:text="View clients"
             android:textAllCaps="false"
             android:textColor="#fff"
+            android:id="@+id/viewClientsButton"
             app:arc_origin="center" />
 
         <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:background="@drawable/circle"
             android:drawableTop="@drawable/ic_message"
             android:paddingBottom="10dp"
@@ -54,6 +56,7 @@
             android:text="Message"
             android:textAllCaps="false"
             android:textColor="#fff"
+            android:id="@+id/messageButton"
             app:arc_origin="center" />
 
         <Button
@@ -68,6 +71,7 @@
             android:text="News"
             android:textAllCaps="false"
             android:textColor="#fff"
+            android:id="@+id/newsButton"
             app:arc_origin="center" />
 
         <Button
@@ -82,6 +86,7 @@
             android:text="Take order"
             android:textAllCaps="false"
             android:textColor="#fff"
+            android:id="@+id/takeOrderButton"
             app:arc_origin="center" />
 
         <Button
@@ -96,6 +101,7 @@
             android:text="Target vs Sales"
             android:textAllCaps="false"
             android:textColor="#fff"
+            android:id="@+id/targetVsSalesButton"
             app:arc_origin="center" />
 
     </com.ogaclejapan.arclayout.ArcLayout>

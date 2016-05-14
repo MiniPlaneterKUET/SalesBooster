@@ -2,13 +2,19 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <corners android:radius="1000dp" />
-    <solid android:color="#5FCECA" />
+    <solid android:color="#536DFE" />
     <stroke
         android:width="2dip"
-        android:color="#5FCECA" />
+        android:color="#E64A19" />
     <padding
         android:bottom="4dp"
         android:left="4dp"
         android:right="4dp"
         android:top="4dp" />
+
+    <shadow
+        android:radius = "5dp"
+        android:shadowDx = "4"
+        android:shadowDy = "4"
+        />
 </shape>

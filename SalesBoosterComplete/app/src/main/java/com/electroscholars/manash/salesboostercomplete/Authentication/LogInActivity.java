@@ -9,14 +9,15 @@ import android.provider.Settings;
 import android.renderscript.Type;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.electroscholars.manash.salesboostercomplete.HelperClass.SetPreferences;
-import com.electroscholars.manash.salesboostercomplete.HelperClass.TypeWriter;
 import com.electroscholars.manash.salesboostercomplete.HelperClass.User;
 import com.electroscholars.manash.salesboostercomplete.MainActivity;
 import com.firebase.client.DataSnapshot;
@@ -56,12 +57,15 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
+
+
         setContentView(R.layout.activity_log_in);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        toolbar = (Toolbar) findViewById(R.id.toolbar);
+//
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
         usernameEditText = (MaterialEditText) findViewById(R.id.usernameEditText);
