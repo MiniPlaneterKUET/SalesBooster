@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 import com.electroscholars.manash.salesboostercomplete.Authentication.LogInActivity;
@@ -48,8 +49,45 @@ public class MainActivity extends AppCompatActivity {
         viewClientsButton = (Button) findViewById(R.id.viewClientsButton);
 
         //Setting button on action listener
-        
+        targetVsSalesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Open targetVsSales activity
+            }
+        });
 
+        //Message activity
+        messageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        //news activity
+        newsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        //view client activity listener
+        viewClientsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
+        //take order activity listener
+        takeOrderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     @Override
