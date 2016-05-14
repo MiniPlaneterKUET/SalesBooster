@@ -6,8 +6,8 @@ package com.electroscholars.manash.salesboostercomplete.HelperClass;
  * Original Author: Pial Kanti
  */
 public class User {
-    private String userID;
-    private String password;
+    public String userID;
+    public String password;
 
     public User(){
 

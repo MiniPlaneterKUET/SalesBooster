@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         //Getting the support action bar
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     @Override
