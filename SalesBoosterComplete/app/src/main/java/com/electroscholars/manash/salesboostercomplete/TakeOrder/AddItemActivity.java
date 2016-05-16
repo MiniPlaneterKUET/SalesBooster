@@ -2,6 +2,7 @@ package com.electroscholars.manash.salesboostercomplete.TakeOrder;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -37,6 +38,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddItemActivity extends AppCompatActivity {
+
+    //Intent for order submission
+    private Intent ORDER_SUBMISSION_INTENT;
 
     private final static String ADD_ITEMS = "Add Items";
 
@@ -485,7 +489,9 @@ public class AddItemActivity extends AppCompatActivity {
         proceedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(AddItemActivity.this, "Proceed Clicked", Toast.LENGTH_SHORT).show();
+                ORDER_SUBMISSION_INTENT = new Intent(AddItemActivity.this,
+                        OrderSubmissionActivity.class);
+                startActivity(ORDER_SUBMISSION_INTENT);
             }
         });
 
@@ -526,6 +532,9 @@ public class AddItemActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
+
 
     }
 

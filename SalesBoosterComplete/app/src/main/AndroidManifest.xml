@@ -47,6 +47,10 @@
         </activity>
         <activity android:name=".TakeOrder.AddItemActivity">
         </activity>
+        <activity android:name=".TakeOrder.OrderSubmissionActivity">
+        </activity>
+        <activity android:name=".Message.MessageActivity">
+        </activity>
     </application>
 
 </manifest>
