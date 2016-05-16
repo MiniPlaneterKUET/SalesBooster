@@ -9,7 +9,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.electroscholars.manash.salesboostercomplete.HelperClass.NewsAdapter;
-import com.electroscholars.manash.salesboostercomplete.MainActivity;
 import com.electroscholars.manash.salesboostercomplete.R;
 
 public class NewsActivity extends AppCompatActivity {

@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), TakeOrderActivity.class);
+                Intent intent = new Intent(getApplicationContext(), OrderSubmissionActivity.class);
                 intent.putExtra(EXTRA_MESSAGE, "DemoMessage");
                 startActivity(intent);
             }
