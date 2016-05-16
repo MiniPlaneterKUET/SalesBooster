@@ -11,11 +11,15 @@ import android.widget.Button;
 
 import com.electroscholars.manash.salesboostercomplete.Authentication.LogInActivity;
 import com.electroscholars.manash.salesboostercomplete.HelperClass.SetPreferences;
+import com.electroscholars.manash.salesboostercomplete.TargetVsSales.TargetVsSalesActivity;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private final static String HOMEPAGE_TITLE = "Homepage";
+
+    //Intents
+    private Intent TARGET_VS_SALES_INTENT;
 
     //Toolbar
     private Toolbar toolbar;
@@ -53,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Open targetVsSales activity
+                TARGET_VS_SALES_INTENT = new Intent(MainActivity.this, TargetVsSalesActivity
+                        .class);
+                startActivity(TARGET_VS_SALES_INTENT);
             }
         });
 
