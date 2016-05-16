@@ -51,6 +51,8 @@
         </activity>
         <activity android:name=".Message.MessageActivity">
         </activity>
+        <activity android:name=".ViewClient.ClientViewActivity">
+        </activity>
     </application>
 
 </manifest>

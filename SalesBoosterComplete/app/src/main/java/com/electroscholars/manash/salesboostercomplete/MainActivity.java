@@ -15,6 +15,7 @@ import com.electroscholars.manash.salesboostercomplete.Message.MessageActivity;
 import com.electroscholars.manash.salesboostercomplete.News.NewsActivity;
 import com.electroscholars.manash.salesboostercomplete.TakeOrder.TakeOrderClientActivity;
 import com.electroscholars.manash.salesboostercomplete.TargetVsSales.TargetVsSalesActivity;
+import com.electroscholars.manash.salesboostercomplete.ViewClient.ClientViewActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private Intent NEWS_INTENT;
     private Intent TAKE_ORDER_INTENT;
     private Intent MESSAGE_INTENT;
-
+    private Intent VIEW_CLIENT_INTENT;
 
     //Toolbar
     private Toolbar toolbar;
@@ -92,7 +93,8 @@ public class MainActivity extends AppCompatActivity {
         viewClientsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                VIEW_CLIENT_INTENT = new Intent(MainActivity.this, ClientViewActivity.class);
+                startActivity(VIEW_CLIENT_INTENT);
             }
         });
 
