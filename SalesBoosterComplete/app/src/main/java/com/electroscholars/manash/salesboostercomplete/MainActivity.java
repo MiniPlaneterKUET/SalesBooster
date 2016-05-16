@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import com.electroscholars.manash.salesboostercomplete.Authentication.LogInActivity;
 import com.electroscholars.manash.salesboostercomplete.HelperClass.SetPreferences;
+import com.electroscholars.manash.salesboostercomplete.News.NewsActivity;
 import com.electroscholars.manash.salesboostercomplete.TargetVsSales.TargetVsSalesActivity;
 
 
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     //Intents
     private Intent TARGET_VS_SALES_INTENT;
+    private Intent NEWS_INTENT;
+
 
     //Toolbar
     private Toolbar toolbar;
@@ -75,7 +78,8 @@ public class MainActivity extends AppCompatActivity {
         newsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                NEWS_INTENT = new Intent(MainActivity.this, NewsActivity.class);
+                startActivity(NEWS_INTENT);
             }
         });
 

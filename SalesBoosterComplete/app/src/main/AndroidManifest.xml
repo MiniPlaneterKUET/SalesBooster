@@ -41,6 +41,8 @@
         </activity>
         <activity android:name=".TargetVsSales.TargetVsSalesActivity">
         </activity>
+        <activity android:name=".News.NewsActivity">
+        </activity>
     </application>
 
 </manifest>
