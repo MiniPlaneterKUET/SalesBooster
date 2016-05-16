@@ -45,6 +45,8 @@
         </activity>
         <activity android:name=".TakeOrder.TakeOrderClientActivity">
         </activity>
+        <activity android:name=".TakeOrder.AddItemActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -17,6 +17,9 @@ import org.w3c.dom.Text;
 
 public class TakeOrderClientActivity extends AppCompatActivity {
 
+    //Add new item intent
+    private Intent ADD_ITEM;
+
     //Buttons
     private Button resetButton;
     private Button saveButton;
@@ -91,7 +94,8 @@ public class TakeOrderClientActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                ADD_ITEM = new Intent(TakeOrderClientActivity.this, AddItemActivity.class);
+                startActivity(ADD_ITEM);
             }
         });
     }
