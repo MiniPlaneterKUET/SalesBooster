@@ -22,10 +22,10 @@
         android:id="@+id/arc_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:arc_axisRadius="120dp"
+        app:arc_axisRadius="100dp"
         app:arc_freeAngle="false"
         app:arc_origin="center"
-        app:arc_radius="168dp"
+        app:arc_radius="120dp"
         app:arc_reverseAngle="false">
 
         <Button
