@@ -38,6 +38,8 @@ import java.util.List;
 
 public class AddItemActivity extends AppCompatActivity {
 
+    private final static String ADD_ITEMS = "Add Items";
+
     private final static int GRIDVIEW_COLUMN = 5;
 
     private ItemDbHelper itemDatabaseHelper;
@@ -74,6 +76,9 @@ public class AddItemActivity extends AppCompatActivity {
 
     private ArrayList<String> itemDetailsList;
     private ArrayAdapter<String> itemDetailsArrayAdapter;
+
+    //Proceed button
+    private Button proceedButton;
 
     private int row;
 
@@ -427,6 +432,10 @@ public class AddItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
 
+        //Gets the toolbar and sets title
+        Toolbar toolbar = (Toolbar) findViewById(R.id.addItemToolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(ADD_ITEMS);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
@@ -471,9 +480,14 @@ public class AddItemActivity extends AppCompatActivity {
         itemDetailsArrayAdapter = new ArrayAdapter<String>(this, R.layout.item_grid_layout_text,
                 itemDetailsList);
 
-//        Intent intent = new Intent(this, ItemSQLiteActivity.class);
-//        startActivity(intent);
+        proceedButton = (Button) findViewById(R.id.proceedButton);
 
+        proceedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(AddItemActivity.this, "Proceed Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //Delete item on long click, shows a AlertDialog to verify
         gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {

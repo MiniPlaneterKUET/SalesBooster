@@ -7,9 +7,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * Created by Manash on 5/8/2016.
- */
+
 public class ItemDbHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "items";
     public static final int COLNO__ID = 0;
