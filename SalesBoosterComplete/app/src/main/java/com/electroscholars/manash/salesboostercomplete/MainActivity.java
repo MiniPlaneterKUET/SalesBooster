@@ -12,6 +12,7 @@ import android.widget.Button;
 import com.electroscholars.manash.salesboostercomplete.Authentication.LogInActivity;
 import com.electroscholars.manash.salesboostercomplete.HelperClass.SetPreferences;
 import com.electroscholars.manash.salesboostercomplete.News.NewsActivity;
+import com.electroscholars.manash.salesboostercomplete.TakeOrder.TakeOrderClientActivity;
 import com.electroscholars.manash.salesboostercomplete.TargetVsSales.TargetVsSalesActivity;
 
 
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     //Intents
     private Intent TARGET_VS_SALES_INTENT;
     private Intent NEWS_INTENT;
+    private Intent TAKE_ORDER_INTENT;
 
 
     //Toolbar
@@ -96,7 +98,8 @@ public class MainActivity extends AppCompatActivity {
         takeOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                TAKE_ORDER_INTENT = new Intent(MainActivity.this, TakeOrderClientActivity.class);
+                startActivity(TAKE_ORDER_INTENT);
             }
         });
     }

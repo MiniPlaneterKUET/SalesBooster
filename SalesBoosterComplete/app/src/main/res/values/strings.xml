@@ -3,4 +3,10 @@
     <string name="entry">
         <item>logout</item>
     </string>
+
+    <string-array name="clientCategory">
+        <item>Corporate</item>
+        <item>Distributor</item>
+        <item>Trade</item>
+    </string-array>
 </resources>

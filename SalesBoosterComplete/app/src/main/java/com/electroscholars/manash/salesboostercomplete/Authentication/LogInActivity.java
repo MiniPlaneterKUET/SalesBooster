@@ -6,15 +6,11 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.provider.Settings;
-import android.renderscript.Type;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.electroscholars.manash.salesboostercomplete.HelperClass.SetPreferences;
@@ -49,8 +45,6 @@ public class LogInActivity extends AppCompatActivity {
     private String password;
     public Firebase firebase;
 
-    private Toolbar toolbar;
-
 
     private TextView salesBoosterTitleTextView;
 
@@ -60,11 +54,6 @@ public class LogInActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_log_in);
-
-//        toolbar = (Toolbar) findViewById(R.id.toolbar);
-//
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);

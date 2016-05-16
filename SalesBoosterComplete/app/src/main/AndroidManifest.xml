@@ -43,6 +43,8 @@
         </activity>
         <activity android:name=".News.NewsActivity">
         </activity>
+        <activity android:name=".TakeOrder.TakeOrderClientActivity">
+        </activity>
     </application>
 
 </manifest>
